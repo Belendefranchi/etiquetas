@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 10px;
+        }
+    </style>
+    <title>Etiquetas Descartables</title>
+</head>
+<body>
+    <h1>Etiquetas Descartables</h1>
+
+    <form action="procesar.php" method="post">
+        <label for="tipo_etiqueta">Tipo de etiqueta:</label>
+        <select name="tipo_etiqueta" id="tipo_etiqueta" required>
+            <option value="">Seleccionar...</option>
+            <option value="F">Etiqueta F</option>
+            <option value="D">Etiqueta D</option>
+            <option value="B">Etiqueta B</option>
+        </select><br><br>
+
+        <label for="valor_inicial">Valor inicial:</label>
+        <input type="text" name="valor_inicial" id="valor_inicial" required><br><br>
+        
+        <label for="valor_final">Valor final:</label>
+        <input type="text" name="valor_final" id="valor_final" required><br><br>
+
+        <label for="printerIP">IP de la impresora</label>
+        <input type="text" name="printerIP" id="printerIP" value="10.0.112.25" required><br><br>
+        
+        <input type="submit" value="Imprimir etiquetas">
+    </form>
+
+</body>
+</html>
+
+<!-- HABILITAR EXTENSIONES ZIP Y SOCKET EN PHP.INI -->
