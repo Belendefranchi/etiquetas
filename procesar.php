@@ -42,13 +42,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$codbar = str_pad($i, $longitud, "0", STR_PAD_LEFT);
 
 			$codigo_zpl_modificado = $codigo_zpl_base;
-
-			$codigo_zpl_modificado = str_replace('[CODBAR]', $codbar, $codigo_zpl_modificado);
 			$codigo_zpl_modificado = str_replace('[TIPO]', $tipo, $codigo_zpl_modificado);
-			if ($tipo == "B"){
-				$codigo_zpl_modificado = str_replace('[CANT]', 2, $codigo_zpl_modificado);
+
+			if ($tipo == "K") {
+				$codigo_zpl_modificado = str_replace('[CODBAR]', $valor_inicial, $codigo_zpl_modificado);
+					$codigo_zpl_modificado = str_replace('[CANT]', 2, $codigo_zpl_modificado);
 			} else {
-				$codigo_zpl_modificado = str_replace('[CANT]', 1, $codigo_zpl_modificado);
+				$codigo_zpl_modificado = str_replace('[CODBAR]', $codbar, $codigo_zpl_modificado);
+
+				if ($tipo == "B") {
+					$codigo_zpl_modificado = str_replace('[CANT]', 2, $codigo_zpl_modificado);
+				} else {
+					$codigo_zpl_modificado = str_replace('[CANT]', 1, $codigo_zpl_modificado);
+				}
 			}
 
 			$archivo_modificado = $target_dir . $tipo . $i . ".txt";
