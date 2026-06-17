@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="images/logo.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/x-icon" href="../images/logo.png">
+<link rel="stylesheet" href="../style.css">
 
-<title>Etiquetas Descartables</title>
+<title>Etiquetas Contenedores</title>
 
 
 </head>
@@ -18,14 +18,14 @@
 <nav class="navbar">
     <div class="navbar-container">
         <div class="navbar-brand">
-            <img src="images/logo.png" alt="Logo">
+            <img src="../images/logo.png" alt="Logo">
         </div>
 
         <div class="navbar-menu">
-            <a href="index.html" class="nav-link active">Descartables</a>
-            <a href="pages/contenedores.html" class="nav-link">Contenedores</a>
-            <a href="pages/productos.html" class="nav-link">Productos</a>
-            <a href="pages/seleccion.html" class="nav-link">Personalizada</a>
+            <a href="../index.html" class="nav-link">Descartables</a>
+            <a href="contenedores.html" class="nav-link active">Contenedores</a>
+            <a href="productos.html" class="nav-link">Productos</a>
+            <a href="seleccion.html" class="nav-link">Personalizada</a>
         </div>
     </div>
 </nav>
@@ -35,20 +35,27 @@
 <div class="container">
     <div class="card">
 
-        <h1>Etiquetas Descartables</h1>
+        <h1>Etiquetas Contenedores</h1>
 
-        <form action="core/procesar.php" method="post">
+        <form action="../core/procesar.php" method="post">
 
             <div class="form-group">
                 <label for="tipo_etiqueta">Tipo de etiqueta</label>
 
                 <select name="tipo_etiqueta" id="tipo_etiqueta" required>
                     <option value="">Seleccionar...</option>
-                    <option value="F">Etiqueta F</option>
-                    <option value="D">Etiqueta D</option>
-                    <option value="P">Etiqueta P</option>
-                    <option value="B">Etiqueta B</option>
-                    <option value="K">Etiqueta K</option>
+                    <option value="CuF">Cubetas filo</option>
+                    <option value="CuL">Cubetas lateral</option>
+                    <option value="CF">Gavetas chicas frente</option>
+                    <option value="CL">Gavetas chicas lateral</option>
+                    <option value="GF">Gavetas grandes frente</option>
+                    <option value="GL">Gavetas grandes lateral</option>
+                    <option value="R">Rack</option>
+                    <option value="M">Minirack</option>
+                    <option value="Li">Livianas</option>
+                    <option value="Di">Dinámicas</option>
+                    <option value="H">Heladera</option>
+                    <option value="A">Alcoholera</option>
                 </select>
             </div>
 

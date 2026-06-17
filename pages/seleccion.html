@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="../images/logo.png">
+<link rel="stylesheet" href="../style.css">
+
+<title>Etiquetas Descartables</title>
+
+
+</head>
+
+<script>
+    let formularioActual = null;
+
+    document.querySelectorAll('.btn-imprimir').forEach(btn => {
+
+        btn.addEventListener('click', function () {
+
+            formularioActual = this.closest('form');
+
+            const v1i = parseInt(formularioActual.querySelector('[name="v1_inicial"]').value);
+            const v1f = parseInt(formularioActual.querySelector('[name="v1_final"]').value);
+
+            const v2i = parseInt(formularioActual.querySelector('[name="v2_inicial"]').value);
+            const v2f = parseInt(formularioActual.querySelector('[name="v2_final"]').value);
+
+            const v3i = parseInt(formularioActual.querySelector('[name="v3_inicial"]').value);
+            const v3f = parseInt(formularioActual.querySelector('[name="v3_final"]').value);
+
+            const v4i = parseInt(formularioActual.querySelector('[name="v4_inicial"]').value);
+            const v4f = parseInt(formularioActual.querySelector('[name="v4_final"]').value);
+
+            const cantidad =
+                (v1f - v1i + 1) *
+                (v2f - v2i + 1) *
+                (v3f - v3i + 1) *
+                (v4f - v4i + 1);
+
+            document.getElementById('cantidadEtiquetas').textContent = cantidad;
+
+            const modal = new bootstrap.Modal(
+                document.getElementById('modalConfirmacion')
+            );
+
+            if (cantidad <= 0) {
+                alert('El rango ingresado no es válido.');
+                return;
+            }
+
+            if (cantidad > 200) {
+                alert(
+                    'La impresión supera las 200 etiquetas. Revise el rango.'
+                );
+                return;
+            }
+
+            modal.show();
+        });
+    });
+
+    document.getElementById('confirmarImpresion').addEventListener('click', function () {
+        if (formularioActual) {
+            formularioActual.submit();
+        }
+    });
+
+</script>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+
+        <div class="navbar-menu">
+            <a href="../index.html" class="nav-link">Descartables</a>
+            <a href="contenedores.html" class="nav-link">Contenedores</a>
+            <a href="productos.html" class="nav-link">Productos</a>
+            <a href="seleccion.html" class="nav-link active">Personalizada</a>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ================= CONTENIDO ================= -->
+<div class="container">
+    <div class="card">
+        <h3 style="text-align: center; color: #072465;">Tamaño etiqueta: <br><strong style="font-size: 26px;">100x50</strong></h3>
+        <img style="width: 100%; padding-top: 20px; padding-bottom: 20px;" src="../images/100x50.png" alt="100x50">
+        <form action="../core/procesar.php" method="post">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="padding-bottom: 20px;" class="th-filas">Tipo</th>
+                        <th style="padding-bottom: 20px;" colspan="4">
+                            <select name="tipo_etiqueta" id="tipo_etiqueta_100x50" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="P">P</option>
+                                <option value="D">D</option>
+                                <option value="L">L</option>
+                                <option value="H">H</option>
+                                <option value="A">A</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Valor 1</th>
+                        <th>Valor 2</th>
+                        <th>Valor 3</th>
+                        <th>Valor 4</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th class="th-filas">Inicial</th>
+                        <td><input type="text" name="v1_inicial" id="v1_inicial_100x50" required></td>
+                        <td><input type="text" name="v2_inicial" id="v2_inicial_100x50" required></td>
+                        <td><input type="text" name="v3_inicial" id="v3_inicial_100x50" required></td>
+                        <td><input type="text" name="v4_inicial" id="v4_inicial_100x50" required></td>
+                    </tr>
+                    <tr>
+                        <th class="th-filas">Final</th>
+                        <td><input type="text" name="v1_final" id="v1_final_100x50" required></td>
+                        <td><input type="text" name="v2_final" id="v2_final_100x50" required></td>
+                        <td><input type="text" name="v3_final" id="v3_final_100x50" required></td>
+                        <td><input type="text" name="v4_final" id="v4_final_100x50" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <label for="printerIP_100x50">Impresora</label>
+                <select name="printerIP" id="printerIP_100x50">
+                    <option value="10.0.112.48">
+                        Planificación
+                    </option>
+                    <option value="10.0.112.25">
+                        Sistemas
+                    </option>
+                    <option value="127.0.0.1">
+                        Virtual
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-imprimir">
+                Imprimir etiquetas
+            </button>
+
+        </form>
+
+        <div class="footer-note">
+        </div>
+
+    </div>
+    <div class="card">
+        <h3 style="text-align: center; color: #072465;">Tamaño etiqueta: <br><strong style="font-size: 26px;">100x25</strong></h3>
+        <img style="width: 100%; padding-top: 37px; padding-bottom: 57px;" src="../images/100x25.png" alt="100x25">
+        <form action="../core/procesar.php" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="padding-bottom: 20px;" class="th-filas">Tipo</th>
+                        <th style="padding-bottom: 20px;" colspan="4">
+                            <select name="tipo_etiqueta" id="tipo_etiqueta_100x25" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="P">P</option>
+                                <option value="D">D</option>
+                                <option value="L">L</option>
+                                <option value="H">H</option>
+                                <option value="A">A</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Valor 1</th>
+                        <th>Valor 2</th>
+                        <th>Valor 3</th>
+                        <th>Valor 4</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th class="th-filas">Inicial</th>
+                        <td><input type="text" name="v1_inicial" id="v1_inicial_100x25" required></td>
+                        <td><input type="text" name="v2_inicial" id="v2_inicial_100x25" required></td>
+                        <td><input type="text" name="v3_inicial" id="v3_inicial_100x25" required></td>
+                        <td><input type="text" name="v4_inicial" id="v4_inicial_100x25" required></td>
+                    </tr>
+                    <tr>
+                        <th class="th-filas">Final</th>
+                        <td><input type="text" name="v1_final" id="v1_final_100x25" required></td>
+                        <td><input type="text" name="v2_final" id="v2_final_100x25" required></td>
+                        <td><input type="text" name="v3_final" id="v3_final_100x25" required></td>
+                        <td><input type="text" name="v4_final" id="v4_final_100x25" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <label for="printerIP_100x25">Impresora</label>
+                <select name="printerIP" id="printerIP_100x25">
+                    <option value="10.0.112.48">
+                        Planificación
+                    </option>
+                    <option value="10.0.112.25">
+                        Sistemas
+                    </option>
+                    <option value="127.0.0.1">
+                        Virtual
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-imprimir">
+                Imprimir etiquetas
+            </button>
+
+        </form>
+
+        <div class="footer-note">
+        </div>
+
+    </div>
+    <div class="card">
+        <h3 style="text-align: center; color: #072465;">Tamaño etiqueta: <br><strong style="font-size: 26px;">70x34</strong></h3>
+        <img style="width: 100%; padding-top: 20px; padding-bottom: 20px;" src="../images/70x34.png" alt="70x34">
+        <form action="../core/procesar.php" method="post">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="padding-bottom: 20px;" class="th-filas">Tipo</th>
+                        <th style="padding-bottom: 20px;" colspan="4">
+                            <select name="tipo_etiqueta" id="tipo_etiqueta_70x34" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="P">P</option>
+                                <option value="D">D</option>
+                                <option value="L">L</option>
+                                <option value="H">H</option>
+                                <option value="A">A</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Valor 1</th>
+                        <th>Valor 2</th>
+                        <th>Valor 3</th>
+                        <th>Valor 4</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th class="th-filas">Inicial</th>
+                        <td><input type="text" name="v1_inicial" id="v1_inicial_70x34" required></td>
+                        <td><input type="text" name="v2_inicial" id="v2_inicial_70x34" required></td>
+                        <td><input type="text" name="v3_inicial" id="v3_inicial_70x34" required></td>
+                        <td><input type="text" name="v4_inicial" id="v4_inicial_70x34" required></td>
+                    </tr>
+                    <tr>
+                        <th class="th-filas">Final</th>
+                        <td><input type="text" name="v1_final" id="v1_final_70x34" required></td>
+                        <td><input type="text" name="v2_final" id="v2_final_70x34" required></td>
+                        <td><input type="text" name="v3_final" id="v3_final_70x34" required></td>
+                        <td><input type="text" name="v4_final" id="v4_final_70x34" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <label for="printerIP_70x34">Impresora</label>
+                <select name="printerIP" id="printerIP_70x34">
+                    <option value="10.0.112.48">
+                        Planificación
+                    </option>
+                    <option value="10.0.112.25">
+                        Sistemas
+                    </option>
+                    <option value="127.0.0.1">
+                        Virtual
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-imprimir">
+                Imprimir etiquetas
+            </button>
+
+        </form>
+
+        <div class="footer-note">
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirmacion" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar impresión</h5>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    Se imprimirán
+                    <strong id="cantidadEtiquetas">0</strong>
+                    etiquetas.
+                </p>
+
+                <p>
+                    ¿Desea continuar?
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="confirmarImpresion">
+                    Confirmar
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

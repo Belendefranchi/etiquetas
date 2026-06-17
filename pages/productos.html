@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="../images/logo.png">
+<link rel="stylesheet" href="../style.css">
+
+<title>Etiquetas Productos</title>
+
+<!-- <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f6f8;
+        color: #212529;
+        padding: 30px 15px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 25px;
+        text-align: center;
+        color: #072465;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    input,
+    select {
+        width: 100%;
+        height: 42px;
+        padding: 10px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        font-size: 15px;
+        background: #fff;
+        transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #072465;
+    }
+
+    .btn {
+        width: 100%;
+        height: 45px;
+        border: none;
+        border-radius: 6px;
+        background: #072465;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .btn:hover {
+        background: #2645C3;
+    }
+
+    .footer-note {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #6c757d;
+        text-align: center;
+    }
+</style> -->
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+
+        <div class="navbar-menu">
+            <a href="../index.html" class="nav-link">Descartables</a>
+            <a href="contenedores.html" class="nav-link">Contenedores</a>
+            <a href="productos.html" class="nav-link active">Productos</a>
+            <a href="seleccion.html" class="nav-link">Personalizada</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+
+        <h1>Etiquetas Productos</h1>
+
+        <form action="../core/procesar.php" method="post">
+            <input type="hidden" name="tipo_etiqueta" id="tipo_etiqueta" value="Pro">
+
+            <div class="form-group">
+                <label for="alternativo">Código alternativo</label>
+                <input type="text" name="alternativo" id="alternativo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="text" name="descripcion" id="descripcion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="barras">Barras</label>
+                <input type="text" name="barras" id="barras" required>
+            </div>
+
+            <div class="form-group">
+                <label for="printerIP">Impresora</label>
+<!--                 <input type="text" name="printerIP" id="printerIP" value="10.0.112.25" required> -->
+                <select name="printerIP" id="printerIP">
+                    <option value="10.0.112.48">Planificación</option>
+                    <option value="10.0.112.25">Sistemas</option>
+                    <option value="127.0.0.1">Virtual</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Imprimir etiquetas</button>
+            <br><br>
+
+        </form>
+
+        <div class="footer-note">
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>
+<!-- Habilitar extensiones ZIP y SOCKET en php.ini -->
